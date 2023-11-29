@@ -709,7 +709,8 @@ if ! [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ];
   then
     fuBANNER "Cloning T-Pot"
     ### DEV
-    git clone https://github.com/telekom-security/tpotce /opt/tpot
+    git clone https://github.com/colsach/kritis /opt/tpot
+    cd /opt/tpot
     git switch install-level
 fi
 
