@@ -32,34 +32,34 @@ services:
 ##################
 
 # Adbhoney service
-  adbhoney:
-    container_name: adbhoney
-    restart: always
-    networks:
-     - adbhoney_local
-    ports:
-     - "5555:5555"
-    image: "dtagdevsec/adbhoney:2204"
-    read_only: true
-    volumes:
-     - /data/adbhoney/log:/opt/adbhoney/log
-     - /data/adbhoney/downloads:/opt/adbhoney/dl
+#  adbhoney:
+#    container_name: adbhoney
+#    restart: always
+#    networks:
+#     - adbhoney_local
+#    ports:
+#     - "5555:5555"
+#    image: "dtagdevsec/adbhoney:2204"
+#    read_only: true
+#    volumes:
+#     - /data/adbhoney/log:/opt/adbhoney/log
+#     - /data/adbhoney/downloads:/opt/adbhoney/dl
 
 # Ciscoasa service
-  ciscoasa:
-    container_name: ciscoasa
-    restart: always
-    tmpfs:
-     - /tmp/ciscoasa:uid=2000,gid=2000
-    networks:
-     - ciscoasa_local
-    ports:
-     - "5000:5000/udp"
-     - "8443:8443"
-    image: "dtagdevsec/ciscoasa:2204"
-    read_only: true
-    volumes:
-     - /data/ciscoasa/log:/var/log/ciscoasa
+#  ciscoasa:
+#    container_name: ciscoasa
+#    restart: always
+#    tmpfs:
+#     - /tmp/ciscoasa:uid=2000,gid=2000
+#    networks:
+#     - ciscoasa_local
+#    ports:
+#     - "5000:5000/udp"
+#     - "8443:8443"
+#    image: "dtagdevsec/ciscoasa:2204"
+#    read_only: true
+#    volumes:
+#     - /data/ciscoasa/log:/var/log/ciscoasa
 
 # CitrixHoneypot service
   citrixhoneypot:
@@ -187,11 +187,11 @@ services:
     networks:
      - ddospot_local
     ports:
-     - "19:19/udp"
+#     - "19:19/udp"
      - "53:53/udp"
-     - "123:123/udp"
+#     - "123:123/udp"
 #     - "161:161/udp"
-     - "1900:1900/udp"
+#     - "1900:1900/udp"
     image: "dtagdevsec/ddospot:2204"
     read_only: true
     volumes:
@@ -203,18 +203,18 @@ services:
 # Get the Horos Client for testing: https://horosproject.org/
 # Get Dicom images (CC BY 3.0): https://www.cancerimagingarchive.net/collections/
 # Put images (which must be in Dicom DCM format or it will not work!) into /data/dicompot/images
-  dicompot:
-    container_name: dicompot
-    restart: always
-    networks:
-     - dicompot_local
-    ports:
-     - "11112:11112"
-    image: "dtagdevsec/dicompot:2204"
-    read_only: true
-    volumes:
-     - /data/dicompot/log:/var/log/dicompot
-#     - /data/dicompot/images:/opt/dicompot/images
+#  dicompot:
+#    container_name: dicompot
+#    restart: always
+#    networks:
+#     - dicompot_local
+#    ports:
+#     - "11112:11112"
+#    image: "dtagdevsec/dicompot:2204"
+#    read_only: true
+#    volumes:
+#     - /data/dicompot/log:/var/log/dicompot
+##     - /data/dicompot/images:/opt/dicompot/images
 
 # Dionaea service
   dionaea:
@@ -225,22 +225,22 @@ services:
     networks:
      - dionaea_local
     ports:
-     - "20:20"
-     - "21:21"
-     - "42:42"
+#     - "20:20"
+#     - "21:21"
+#     - "42:42"
      - "69:69/udp"
      - "81:81"
-     - "135:135"
+#     - "135:135"
      # - "443:443"
-     - "445:445"
-     - "1433:1433"
-     - "1723:1723"
-     - "1883:1883"
-     - "3306:3306"
+#     - "445:445"
+#     - "1433:1433"
+#     - "1723:1723"
+#     - "1883:1883"
+#     - "3306:3306"
      # - "5060:5060"
      # - "5060:5060/udp"
      # - "5061:5061"
-     - "27017:27017"
+#     - "27017:27017"
     image: "dtagdevsec/dionaea:2204"
     read_only: true
     volumes:
@@ -313,82 +313,82 @@ services:
      - /data/honeytrap/log:/opt/honeytrap/var/log
 
 # Ipphoney service
-  ipphoney:
-    container_name: ipphoney
-    restart: always
-    networks:
-     - ipphoney_local
-    ports:
-     - "631:631"
-    image: "dtagdevsec/ipphoney:2204"
-    read_only: true
-    volumes:
-     - /data/ipphoney/log:/opt/ipphoney/log
+#  ipphoney:
+#    container_name: ipphoney
+#    restart: always
+#    networks:
+#     - ipphoney_local
+#    ports:
+#     - "631:631"
+#    image: "dtagdevsec/ipphoney:2204"
+#    read_only: true
+#    volumes:
+#     - /data/ipphoney/log:/opt/ipphoney/log
 
 # Mailoney service
-  mailoney:
-    container_name: mailoney
-    restart: always
-    environment:
-     - HPFEEDS_SERVER=
-     - HPFEEDS_IDENT=user
-     - HPFEEDS_SECRET=pass
-     - HPFEEDS_PORT=20000
-     - HPFEEDS_CHANNELPREFIX=prefix
-    networks:
-     - mailoney_local
-    ports:
-     - "25:25"
-    image: "dtagdevsec/mailoney:2204"
-    read_only: true
-    volumes:
-     - /data/mailoney/log:/opt/mailoney/logs
+#  mailoney:
+#    container_name: mailoney
+#    restart: always
+#    environment:
+#     - HPFEEDS_SERVER=
+#     - HPFEEDS_IDENT=user
+#     - HPFEEDS_SECRET=pass
+#     - HPFEEDS_PORT=20000
+#     - HPFEEDS_CHANNELPREFIX=prefix
+#    networks:
+#     - mailoney_local
+#    ports:
+#     - "25:25"
+#    image: "dtagdevsec/mailoney:2204"
+#    read_only: true
+#    volumes:
+#     - /data/mailoney/log:/opt/mailoney/logs
 
 # Medpot service
-  medpot:
-    container_name: medpot
-    restart: always
-    networks:
-     - medpot_local
-    ports:
-     - "2575:2575"
-    image: "dtagdevsec/medpot:2204"
-    read_only: true
-    volumes:
-     - /data/medpot/log/:/var/log/medpot
+#  medpot:
+#    container_name: medpot
+#    restart: always
+#    networks:
+#     - medpot_local
+#    ports:
+#     - "2575:2575"
+#    image: "dtagdevsec/medpot:2204"
+#    read_only: true
+#    volumes:
+#     - /data/medpot/log/:/var/log/medpot
 
 # Redishoneypot service
-  redishoneypot:
-    container_name: redishoneypot
-    restart: always
-    networks:
-     - redishoneypot_local
-    ports:
-     - "6379:6379"
-    image: "dtagdevsec/redishoneypot:2204"
-    read_only: true
-    volumes:
-     - /data/redishoneypot/log:/var/log/redishoneypot
+#  redishoneypot:
+#    container_name: redishoneypot
+#    restart: always
+#    networks:
+#     - redishoneypot_local
+#    ports:
+#     - "6379:6379"
+#    image: "dtagdevsec/redishoneypot:2204"
+#    read_only: true
+#    volumes:
+#     - /data/redishoneypot/log:/var/log/redishoneypot
 
 # SentryPeer service
-  sentrypeer:
-    container_name: sentrypeer
-    restart: always
-# SentryPeer offers to exchange bad actor data via DHT / P2P mode by setting the ENV to true (1)
-# In some cases (i.e. internally deployed T-Pots) this might be confusing as SentryPeer will show
-# the bad actors in its logs. Therefore this option is opt-in based.
-#    environment:
-#     - SENTRYPEER_PEER_TO_PEER=0
-    networks:
-     - sentrypeer_local
-    ports:
-#     - "4222:4222/udp"
-     - "5060:5060/udp"
-#     - "127.0.0.1:8082:8082"
-    image: "dtagdevsec/sentrypeer:2204"
-    read_only: true
-    volumes:
-     - /data/sentrypeer/log:/var/log/sentrypeer
+#  sentrypeer:
+#    container_name: sentrypeer
+#    restart: always
+## SentryPeer offers to exchange bad actor data via DHT / P2P mode by setting the ENV to true (1)
+## In some cases (i.e. internally deployed T-Pots) this might be confusing as SentryPeer will show
+## the bad actors in its logs. Therefore this option is opt-in based.
+##    environment:
+##     - SENTRYPEER_PEER_TO_PEER=0
+#    networks:
+#     - sentrypeer_local
+#    ports:
+##     - "4222:4222/udp"
+#     - "5060:5060/udp"
+##     - "127.0.0.1:8082:8082"
+#    image: "dtagdevsec/sentrypeer:2204"
+#    read_only: true
+#    volumes:
+#     - /data/sentrypeer/log:/var/log/sentrypeer
 
 #### Snare / Tanner
 ## Tanner Redis Service
@@ -605,26 +605,26 @@ services:
 #### /ELK
 
 # Ewsposter service
-  ewsposter:
-    container_name: ewsposter
-    restart: always
-    networks:
-     - ewsposter_local
-    environment:
-     - EWS_HPFEEDS_ENABLE=false
-     - EWS_HPFEEDS_HOST=host
-     - EWS_HPFEEDS_PORT=port
-     - EWS_HPFEEDS_CHANNELS=channels
-     - EWS_HPFEEDS_IDENT=user
-     - EWS_HPFEEDS_SECRET=secret
-     - EWS_HPFEEDS_TLSCERT=false
-     - EWS_HPFEEDS_FORMAT=json
-    env_file:
-     - /opt/tpot/etc/compose/elk_environment
-    image: "dtagdevsec/ewsposter:2204"
-    volumes:
-     - /data:/data
-     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
+#  ewsposter:
+#    container_name: ewsposter
+#    restart: always
+#    networks:
+#     - ewsposter_local
+#    environment:
+#     - EWS_HPFEEDS_ENABLE=false
+#     - EWS_HPFEEDS_HOST=host
+#     - EWS_HPFEEDS_PORT=port
+#     - EWS_HPFEEDS_CHANNELS=channels
+#     - EWS_HPFEEDS_IDENT=user
+#     - EWS_HPFEEDS_SECRET=secret
+#     - EWS_HPFEEDS_TLSCERT=false
+#     - EWS_HPFEEDS_FORMAT=json
+#    env_file:
+#     - /opt/tpot/etc/compose/elk_environment
+#    image: "dtagdevsec/ewsposter:2204"
+#    volumes:
+#     - /data:/data
+#     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
 
 # Nginx service
   nginx:
