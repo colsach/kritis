@@ -403,7 +403,7 @@ for i in "$@"
         echo
         echo "--conf=<Path to \"tpot.conf\">"
 	echo "  Use this if you want to automatically deploy a T-Pot instance (--type=auto implied)."
-        echo "  A configuration example is available in \"tpotce/iso/installer/tpot.conf.dist\"."
+        echo "  A configuration example is available in \"kritis/iso/installer/tpot.conf.dist\"."
         echo
         echo "--type=<[user, auto, iso]>"
 	echo "  user, use this if you want to manually install a T-Pot on a Debian (Stable) machine."
@@ -709,7 +709,8 @@ if ! [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ];
   then
     fuBANNER "Cloning T-Pot"
     ### DEV
-    git clone https://github.com/telekom-security/tpotce /opt/tpot
+    # git clone https://github.com/telekom-security/tpotce /opt/tpot
+    git clone https://github.com/colsach/kritis /opt/tpot
 fi
 
 # Let's create the T-Pot user
