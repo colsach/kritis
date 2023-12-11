@@ -711,6 +711,9 @@ if ! [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ];
     ### DEV
     # git clone https://github.com/telekom-security/tpotce /opt/tpot
     git clone https://github.com/colsach/kritis /opt/tpot
+    cd /opt/tpot/
+    git switch boot-level
+    echo "Switched to boot-level git repo"
 fi
 
 # Let's create the T-Pot user
@@ -912,6 +915,11 @@ rm -rf /etc/motd.d/cockpit && \
 rm -rf /etc/issue.net && \
 rm -rf /etc/motd && \
 systemctl restart console-setup.service
+
+# Stop unwanted container
+fuBANNER "Stop honeypots"
+docker stop adbhoney ciscoasa dicompot ipphoney mailhoney medpot redishoneypot sentrypeer
+
 
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "auto" ];
   then

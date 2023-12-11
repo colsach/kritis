@@ -34,7 +34,7 @@ services:
 # Adbhoney service
   adbhoney:
     container_name: adbhoney
-    restart: always
+    restart: unless-stopped
     networks:
      - adbhoney_local
     ports:
@@ -48,7 +48,7 @@ services:
 # Ciscoasa service
   ciscoasa:
     container_name: ciscoasa
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/ciscoasa:uid=2000,gid=2000
     networks:
@@ -64,7 +64,7 @@ services:
 # CitrixHoneypot service
   citrixhoneypot:
     container_name: citrixhoneypot
-    restart: always
+    restart: unless-stopped
     networks:
      - citrixhoneypot_local
     ports:
@@ -77,7 +77,7 @@ services:
 # Conpot IEC104 service
   conpot_IEC104:
     container_name: conpot_iec104
-    restart: always
+    restart: unless-stopped
     environment:
      - CONPOT_CONFIG=/etc/conpot/conpot.cfg
      - CONPOT_JSON_LOG=/var/log/conpot/conpot_IEC104.json
@@ -99,7 +99,7 @@ services:
 # Conpot guardian_ast service
   conpot_guardian_ast:
     container_name: conpot_guardian_ast
-    restart: always
+    restart: unless-stopped
     environment:
      - CONPOT_CONFIG=/etc/conpot/conpot.cfg
      - CONPOT_JSON_LOG=/var/log/conpot/conpot_guardian_ast.json
@@ -120,7 +120,7 @@ services:
 # Conpot ipmi
   conpot_ipmi:
     container_name: conpot_ipmi
-    restart: always
+    restart: unless-stopped
     environment:
      - CONPOT_CONFIG=/etc/conpot/conpot.cfg
      - CONPOT_JSON_LOG=/var/log/conpot/conpot_ipmi.json
@@ -141,7 +141,7 @@ services:
 # Conpot kamstrup_382
   conpot_kamstrup_382:
     container_name: conpot_kamstrup_382
-    restart: always
+    restart: unless-stopped
     environment:
      - CONPOT_CONFIG=/etc/conpot/conpot.cfg
      - CONPOT_JSON_LOG=/var/log/conpot/conpot_kamstrup_382.json
@@ -163,7 +163,7 @@ services:
 # Cowrie service
   cowrie:
     container_name: cowrie
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/cowrie:uid=2000,gid=2000
      - /tmp/cowrie/data:uid=2000,gid=2000
@@ -183,7 +183,7 @@ services:
 # Ddospot service
   ddospot:
     container_name: ddospot
-    restart: always
+    restart: unless-stopped
     networks:
      - ddospot_local
     ports:
@@ -205,7 +205,7 @@ services:
 # Put images (which must be in Dicom DCM format or it will not work!) into /data/dicompot/images
   dicompot:
     container_name: dicompot
-    restart: always
+    restart: unless-stopped
     networks:
      - dicompot_local
     ports:
@@ -221,7 +221,7 @@ services:
     container_name: dionaea
     stdin_open: true
     tty: true
-    restart: always
+    restart: unless-stopped
     networks:
      - dionaea_local
     ports:
@@ -256,7 +256,7 @@ services:
 # ElasticPot service
   elasticpot:
     container_name: elasticpot
-    restart: always
+    restart: unless-stopped
     networks:
      - elasticpot_local
     ports:
@@ -269,7 +269,7 @@ services:
 # Heralding service
   heralding:
     container_name: heralding
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/heralding:uid=2000,gid=2000
     networks:
@@ -299,7 +299,7 @@ services:
 # Honeytrap service
   honeytrap:
     container_name: honeytrap
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/honeytrap:uid=2000,gid=2000
     network_mode: "host"
@@ -315,7 +315,7 @@ services:
 # Ipphoney service
   ipphoney:
     container_name: ipphoney
-    restart: always
+    restart: unless-stopped
     networks:
      - ipphoney_local
     ports:
@@ -328,7 +328,7 @@ services:
 # Mailoney service
   mailoney:
     container_name: mailoney
-    restart: always
+    restart: unless-stopped
     environment:
      - HPFEEDS_SERVER=
      - HPFEEDS_IDENT=user
@@ -347,7 +347,7 @@ services:
 # Medpot service
   medpot:
     container_name: medpot
-    restart: always
+    restart: unless-stopped
     networks:
      - medpot_local
     ports:
@@ -360,7 +360,7 @@ services:
 # Redishoneypot service
   redishoneypot:
     container_name: redishoneypot
-    restart: always
+    restart: unless-stopped
     networks:
      - redishoneypot_local
     ports:
@@ -373,7 +373,7 @@ services:
 # SentryPeer service
   sentrypeer:
     container_name: sentrypeer
-    restart: always
+    restart: unless-stopped
 # SentryPeer offers to exchange bad actor data via DHT / P2P mode by setting the ENV to true (1)
 # In some cases (i.e. internally deployed T-Pots) this might be confusing as SentryPeer will show
 # the bad actors in its logs. Therefore this option is opt-in based.
@@ -394,7 +394,7 @@ services:
 ## Tanner Redis Service
   tanner_redis:
     container_name: tanner_redis
-    restart: always
+    restart: unless-stopped
     tty: true
     networks:
      - tanner_local
@@ -404,7 +404,7 @@ services:
 ## PHP Sandbox service
   tanner_phpox:
     container_name: tanner_phpox
-    restart: always
+    restart: unless-stopped
     tty: true
     networks:
      - tanner_local
@@ -414,7 +414,7 @@ services:
 ## Tanner API Service
   tanner_api:
     container_name: tanner_api
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/tanner:uid=2000,gid=2000
     tty: true
@@ -431,7 +431,7 @@ services:
 ## Tanner Service
   tanner:
     container_name: tanner
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /tmp/tanner:uid=2000,gid=2000
     tty: true
@@ -451,7 +451,7 @@ services:
 ## Snare Service
   snare:
     container_name: snare
-    restart: always
+    restart: unless-stopped
     tty: true
     networks:
      - tanner_local
@@ -469,7 +469,7 @@ services:
 # Fatt service
   fatt:
     container_name: fatt
-    restart: always
+    restart: unless-stopped
     network_mode: "host"
     cap_add:
      - NET_ADMIN
@@ -482,7 +482,7 @@ services:
 # P0f service
   p0f:
     container_name: p0f
-    restart: always
+    restart: unless-stopped
     network_mode: "host"
     image: "dtagdevsec/p0f:2204"
     read_only: true
@@ -492,7 +492,7 @@ services:
 # Suricata service
   suricata:
     container_name: suricata
-    restart: always
+    restart: unless-stopped
     environment:
     # For ET Pro ruleset replace "OPEN" with your OINKCODE
      - OINKCODE=OPEN
@@ -516,7 +516,7 @@ services:
 ## Elasticsearch service
   elasticsearch:
     container_name: elasticsearch
-    restart: always
+    restart: unless-stopped
     environment:
      - bootstrap.memory_lock=true
      - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
@@ -540,7 +540,7 @@ services:
 ## Kibana service
   kibana:
     container_name: kibana
-    restart: always
+    restart: unless-stopped
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -552,7 +552,7 @@ services:
 ## Logstash service
   logstash:
     container_name: logstash
-    restart: always
+    restart: unless-stopped
     environment:
      - LS_JAVA_OPTS=-Xms1024m -Xmx1024m
     depends_on:
@@ -568,7 +568,7 @@ services:
 ## Map Redis Service
   map_redis:
     container_name: map_redis
-    restart: always
+    restart: unless-stopped
     stop_signal: SIGKILL
     tty: true
     image: "dtagdevsec/redis:2204"
@@ -577,7 +577,7 @@ services:
 ## Map Web Service
   map_web:
     container_name: map_web
-    restart: always
+    restart: unless-stopped
     environment:
      - MAP_COMMAND=AttackMapServer.py
     env_file:
@@ -591,7 +591,7 @@ services:
 ## Map Data Service
   map_data:
     container_name: map_data
-    restart: always
+    restart: unless-stopped
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -605,31 +605,31 @@ services:
 #### /ELK
 
 # Ewsposter service
-  ewsposter:
-    container_name: ewsposter
-    restart: always
-    networks:
-     - ewsposter_local
-    environment:
-     - EWS_HPFEEDS_ENABLE=false
-     - EWS_HPFEEDS_HOST=host
-     - EWS_HPFEEDS_PORT=port
-     - EWS_HPFEEDS_CHANNELS=channels
-     - EWS_HPFEEDS_IDENT=user
-     - EWS_HPFEEDS_SECRET=secret
-     - EWS_HPFEEDS_TLSCERT=false
-     - EWS_HPFEEDS_FORMAT=json
-    env_file:
-     - /opt/tpot/etc/compose/elk_environment
-    image: "dtagdevsec/ewsposter:2204"
-    volumes:
-     - /data:/data
-     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
+#  ewsposter:
+#    container_name: ewsposter
+#    restart: unless-stopped
+#    networks:
+#     - ewsposter_local
+#    environment:
+#     - EWS_HPFEEDS_ENABLE=false
+#     - EWS_HPFEEDS_HOST=host
+#     - EWS_HPFEEDS_PORT=port
+#     - EWS_HPFEEDS_CHANNELS=channels
+#     - EWS_HPFEEDS_IDENT=user
+#     - EWS_HPFEEDS_SECRET=secret
+#     - EWS_HPFEEDS_TLSCERT=false
+#     - EWS_HPFEEDS_FORMAT=json
+#    env_file:
+#     - /opt/tpot/etc/compose/elk_environment
+#    image: "dtagdevsec/ewsposter:2204"
+#    volumes:
+#     - /data:/data
+#     - /data/ews/conf/ews.ip:/opt/ewsposter/ews.ip
 
 # Nginx service
   nginx:
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     tmpfs:
      - /var/tmp/nginx/client_body
      - /var/tmp/nginx/proxy
@@ -652,7 +652,7 @@ services:
 # Spiderfoot service
   spiderfoot:
     container_name: spiderfoot
-    restart: always
+    restart: unless-stopped
     networks:
      - spiderfoot_local
     ports:
