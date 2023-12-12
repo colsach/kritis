@@ -711,6 +711,8 @@ if ! [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ];
     ### DEV
     # git clone https://github.com/telekom-security/tpotce /opt/tpot
     git clone https://github.com/colsach/kritis /opt/tpot
+    cd /opt/tpot
+    git switch custom-file
 fi
 
 # Let's create the T-Pot user
@@ -776,6 +778,10 @@ case $myCONF_TPOT_FLAVOR in
   SENSOR)
     fuBANNER "SENSOR"
     ln -s /opt/tpot/etc/compose/sensor.yml $myTPOTCOMPOSE
+  ;;
+  CUSTOM)
+    fuBANNER "CUSTOM"
+    ln -s /opt/tpot/etc/compose/custom.yml $myTPOTCOMPOSE
   ;;
 esac
 
