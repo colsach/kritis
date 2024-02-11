@@ -531,13 +531,8 @@ if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "use
     myCONF_TPOT_FLAVOR=$(dialog --keep-window --no-cancel --backtitle "$myBACKTITLE" --title "[ Choose Your T-Pot Edition ]" --menu \
     "\nRequired: 8-16GB RAM, 128GB SSD\nRecommended: 16GB RAM, 256GB SSD" 17 70 1 \
     "STANDARD" "T-Pot Standalone with everything you need" \
-    "HIVE" "T-Pot Hive: ELK & Tools" \
-    "HIVE_SENSOR" "T-Pot Hive Sensor: Honeypots & NSM" \
     "INDUSTRIAL" "Same as Standard with focus on Conpot" \
-    "LOG4J" "Log4Pot, ELK, NSM & Tools" \
     "MEDICAL" "Dicompot, Medpot, ELK, NSM & Tools" \
-    "MINI" "Same as Standard with focus on qHoneypots" \
-    "SENSOR" "Just Honeypots & NSM"\
     "CUSTOM" "Custom T-Pot for KRITISM project" 3>&1 1>&2 2>&3 3>&-)
 fi
 
@@ -750,39 +745,39 @@ sed -i '2i\auth requisite pam_succeed_if.so uid >= 1000' /etc/pam.d/cockpit
 case $myCONF_TPOT_FLAVOR in
   STANDARD)
     fuBANNER "STANDARD"
-    ln -s /opt/tpot/etc/compose/standard.yml $myTPOTCOMPOSE
+    ln -s /opt/tpot/etc/compose/k_standard.yml $myTPOTCOMPOSE
   ;;
-  HIVE)
-    fuBANNER "HIVE"
-    ln -s /opt/tpot/etc/compose/hive.yml $myTPOTCOMPOSE
-  ;;
-  HIVE_SENSOR)
-    fuBANNER "HIVE_SENSOR"
-    ln -s /opt/tpot/etc/compose/hive_sensor.yml $myTPOTCOMPOSE
-  ;;
+#  HIVE)
+#    fuBANNER "HIVE"
+#    ln -s /opt/tpot/etc/compose/hive.yml $myTPOTCOMPOSE
+#  ;;
+#  HIVE_SENSOR)
+#    fuBANNER "HIVE_SENSOR"
+#    ln -s /opt/tpot/etc/compose/hive_sensor.yml $myTPOTCOMPOSE
+#  ;;
   INDUSTRIAL)
     fuBANNER "INDUSTRIAL"
-    ln -s /opt/tpot/etc/compose/industrial.yml $myTPOTCOMPOSE
+    ln -s /opt/tpot/etc/compose/k_industrial.yml $myTPOTCOMPOSE
   ;;
-  LOG4J)
-    fuBANNER "LOG4J"
-    ln -s /opt/tpot/etc/compose/log4j.yml $myTPOTCOMPOSE
-  ;;
+#  LOG4J)
+#    fuBANNER "LOG4J"
+#    ln -s /opt/tpot/etc/compose/log4j.yml $myTPOTCOMPOSE
+#  ;;
   MEDICAL)
     fuBANNER "MEDICAL"
-    ln -s /opt/tpot/etc/compose/medical.yml $myTPOTCOMPOSE
+    ln -s /opt/tpot/etc/compose/k_medical.yml $myTPOTCOMPOSE
   ;;
-  MINI)
-    fuBANNER "MINI"
-    ln -s /opt/tpot/etc/compose/mini.yml $myTPOTCOMPOSE
-  ;;
-  SENSOR)
-    fuBANNER "SENSOR"
-    ln -s /opt/tpot/etc/compose/sensor.yml $myTPOTCOMPOSE
-  ;;
+#  MINI)
+#    fuBANNER "MINI"
+#    ln -s /opt/tpot/etc/compose/mini.yml $myTPOTCOMPOSE
+#  ;;
+#  SENSOR)
+#    fuBANNER "SENSOR"
+#    ln -s /opt/tpot/etc/compose/sensor.yml $myTPOTCOMPOSE
+#  ;;
   CUSTOM)
     fuBANNER "CUSTOM"
-    ln -s /opt/tpot/etc/compose/custom.yml $myTPOTCOMPOSE
+    ln -s /opt/tpot/etc/compose/k_custom.yml $myTPOTCOMPOSE
   ;;
 esac
 
