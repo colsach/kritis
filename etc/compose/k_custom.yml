@@ -38,33 +38,33 @@ services:
 #     - /data/citrixhoneypot/responses:/opt/citrixhoneypot/responses
 
 # Conpot default service
-  conpot_default:
-    container_name: conpot_default
-    restart: always
-    environment:
-     - CONPOT_CONFIG=/etc/conpot/conpot.cfg
-     - CONPOT_JSON_LOG=/var/log/conpot/conpot_default.json
-     - CONPOT_LOG=/var/log/conpot/conpot_default.log
-     - CONPOT_TEMPLATE=default
-     - CONPOT_TMP=/tmp/conpot
-    tmpfs:
-     - /tmp/conpot:uid=2000,gid=2000
-    networks:
-     - conpot_local_default
-    ports:
-     - "69:69/udp"            # TFTP
-#     - "80:80"                # HTTP
-     - "102:102"              # TSAP
-     - "161:161/udp"          # SNMP
-     - "502:502"              # Modbus
-#     - "623:623/udp"
-     - "21:21"                # FTP
-     - "44818:44818"          # Ethernet/IP
-#     - "47808:47808/udp"     # BACnet
-    image: "dtagdevsec/conpot:2204"
-    read_only: true
-    volumes:
-     - /data/conpot/log:/var/log/conpot
+#  conpot_default:
+#    container_name: conpot_default
+#    restart: always
+#    environment:
+#     - CONPOT_CONFIG=/etc/conpot/conpot.cfg
+#     - CONPOT_JSON_LOG=/var/log/conpot/conpot_default.json
+#     - CONPOT_LOG=/var/log/conpot/conpot_default.log
+#     - CONPOT_TEMPLATE=default
+#     - CONPOT_TMP=/tmp/conpot
+#    tmpfs:
+#     - /tmp/conpot:uid=2000,gid=2000
+#    networks:
+#     - conpot_local_default
+#    ports:
+#     - "69:69/udp"            # TFTP
+##     - "80:80"                # HTTP
+#     - "102:102"              # TSAP
+#     - "161:161/udp"          # SNMP
+#     - "502:502"              # Modbus
+##     - "623:623/udp"
+#     - "21:21"                # FTP
+#     - "44818:44818"          # Ethernet/IP
+##     - "47808:47808/udp"     # BACnet
+#    image: "dtagdevsec/conpot:2204"
+#    read_only: true
+#    volumes:
+#     - /data/conpot/log:/var/log/conpot
 
 # Conpot IEC104 service
   conpot_IEC104:
@@ -81,7 +81,7 @@ services:
     networks:
      - conpot_local_IEC104
     ports:
-#     - "161:161/udp"
+     - "161:161/udp"
      - "2404:2404"
     image: "dtagdevsec/conpot:2204"
     read_only: true
